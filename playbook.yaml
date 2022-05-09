@@ -1,0 +1,13 @@
+-
+ name: test playbook
+ hosts: ubuntu_target
+ become: yes
+ roles:
+ - ubuntu_tasks
+
+-
+  name: windows tasks
+  hosts: web
+  roles:
+  - windows_tasks
+

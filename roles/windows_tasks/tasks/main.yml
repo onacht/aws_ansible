@@ -1,0 +1,3 @@
+---
+# tasks file for windows_tasks
+- include_tasks: tasks/iis.yaml

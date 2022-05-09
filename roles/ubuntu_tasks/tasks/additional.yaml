@@ -1,0 +1,27 @@
+- name: create user with my name
+  user:
+    name: Ofek_Nacht
+    state: present
+
+- name: create new folder
+  file:
+    path: /opt/testim
+    state: directory
+
+- name: Create a new file with permissions
+  file:
+    path: /opt/testim/test
+    state: touch
+    mode: 0755
+
+- name: write date to log.txt
+  lineinfile:
+    path: /opt/testim/test
+    state: present
+    line: "{{ item }}"
+  with_items:
+  - '#!/bin/bash'
+  - 'echo $( date > /opt/testim/log.txt )'
+
+- name: Execute the script
+  command: sh /opt/testim/test

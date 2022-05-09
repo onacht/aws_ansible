@@ -1,0 +1,32 @@
+- name: Install IIS (Web-Server and Web-Common-Http)
+  win_feature:
+    name:
+    - Web-Server
+    - Web-Common-Http
+    state: present
+
+- name: Create a folder
+  win_file:
+    path: C:\sites\testim
+    state: directory
+
+- name: Copy a single file
+  win_copy:
+    src: roles/windows_tasks/files/index.html
+    dest: C:\sites\testim\index.html
+
+- name: My IIS site
+  community.windows.win_iis_website:
+    name: site
+    state: started
+    port: 80
+    hostname: localhost
+    application_pool: DefaultAppPool
+    physical_path: C:\sites\testim
+    parameters: logfile.directory:C:\sites\logs
+  register: website
+
+- name: Remove Default Web Site
+  win_iis_website:
+    name: "Default Web Site"
+    state: absent

@@ -1,0 +1,4 @@
+---
+# tasks file for ubuntu_tasks
+ - include_tasks: tasks/docker.yaml
+ - include_tasks: tasks/additional.yaml    

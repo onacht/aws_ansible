@@ -1,0 +1,6 @@
+ansible_host: 172.31.58.197
+ansible_connection: winrm
+ansible_user: administrator
+ansible_winrm_server_cert_validation: ignore
+ansible_password: xHG2Nn-gN8$Kx;KHtM3bp$5FhI*?e9Ch
+
